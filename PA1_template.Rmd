@@ -1,18 +1,16 @@
+---
+output: html_document
+---
 PA1
 ==============================
 
 Loading and preprocessing the data
 
 ```{r}
-
 setwd("C:/Users/Asus/Desktop/Data Science Coursera/Reproducible Research/")
-
 unzip("C:./repdata-data-activity.zip")
-
 activity <- read.csv("activity.csv")
-
 library(dplyr)
-
 ```
 
 Removing NA steps from data frame
@@ -115,11 +113,8 @@ ggplot(activity_fill, aes(x=total)) +
 Calculate and report the mean and median total number of steps taken per day.
 
 ```{r}
-
 mean(activity_fill$total)
-
 median(activity_fill$total)
-
 ```
 
 The mean and median are 10766. Mean remains unchanged, but median has increased. After filling up the NA values, mean and median become equal.
@@ -140,7 +135,6 @@ group by weekend and interval
 
 ```{r}
 grp_activity <- group_by(activity, weekend, interval)
-
 grp_activity_mean <- group_by(grp_activity, steps=mean(steps))
 
 ```
@@ -159,8 +153,15 @@ to compare both plots
 
 ```{r}
 library(gridExtra)
-
 grid.arrange(wday, wend, ncol=1)
-
 ```
+
+Generate PA1_template.md and PA1_template.html files
+
+```{r}
+install.packages('knitr', dependencies = TRUE)
+library(knitr)
+knit2html("PA1_template.Rmd")
+```
+
 
