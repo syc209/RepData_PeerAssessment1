@@ -15,7 +15,7 @@ options(scipen = 1)  # Turn off scientific notations for numbers
 Loading and preprocessing the data
 
 ```{r}
-setwd("C:/Users/Asus/Desktop/Data Science Coursera/Reproducible Research/RepData_PeerAssessment1/")
+setwd("C:/Users/Asus/Desktop/Data Science Coursera/Reproducible Research/")
 unzip("C:./repdata-data-activity.zip")
 activity <- read.csv("activity.csv")
 library(dplyr)
