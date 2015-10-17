@@ -4,6 +4,14 @@ output: html_document
 PA1
 ==============================
 
+Setting
+
+```{r}
+echo = TRUE  # Always make code visible
+options(scipen = 1)  # Turn off scientific notations for numbers
+```
+
+
 Loading and preprocessing the data
 
 ```{r}
@@ -133,7 +141,7 @@ activity <- mutate(activity, weekend=factor(weekdays(ymd(date)) %in% c("Saturday
 
 group by weekend and interval
 
-```{r}
+```{r,echo=TRUE}
 grp_activity <- group_by(activity, weekend, interval)
 grp_activity_mean <- group_by(grp_activity, steps=mean(steps))
 
@@ -141,7 +149,7 @@ grp_activity_mean <- group_by(grp_activity, steps=mean(steps))
 
 Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) to show the differences between weekday and weekend
 
-```{r}
+```{r, echo=TRUE}
 wday <- ggplot(data=subset(grp_activity_mean, weekend==FALSE), aes(x=interval, y=steps)) + geom_line() + 
   ggtitle("Weekday")
 
